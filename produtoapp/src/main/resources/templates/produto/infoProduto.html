@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-
-<!-- URL's para a importação do thymeleaf-->
-
 <html xmlns:th="http://thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
@@ -17,10 +14,20 @@
 	
 	<body>
 	
-		<h1>Produtos APP</h1>
-	
-		<a href="/cadastrarProduto" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Cadastrar um produto</a>
-		<a href="/verProdutos" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Ver os produtos cadastrados</a>
+		<h1>Informação do Produto</h1>
+		
+		<div th:each="produto: ${produto}" class="container">
+		
+			<div class="row">
+			
+				<p><span th:text="${produto.nome}"></span></p>
+				<p><span th:text="${produto.preco}"></span></p>
+				<p><span th:text="${produto.marca}"></span></p>
+				<p><span th:text="${produto.descricao}"></span></p>
+			
+			</div>
+		
+		</div>
 	
 	</body>
 	

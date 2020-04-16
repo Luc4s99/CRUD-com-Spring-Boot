@@ -8,6 +8,9 @@
 	<head>
 	
 		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		
 		<title>Produtos APP</title>
 		
 	</head>
@@ -16,17 +19,37 @@
 	
 		<h1>Cadastro de Produtos</h1>
 		
-		<form method="post" action="">
+		<form method="post" action="" class="container">
+			
+			<div class="form-group mx-sm-3 mb-2">
+				<label for="nomeP">Nome do Produto:</label>
+	    		<input type="text" class="form-control" name="nome" id="nomeP">
+	    	</div>
+				
+			<div class="form-group mx-sm-3 mb-2">
+				<label for="precoP">Preço:</label>	
+				<input type="number" class="form-control" name="preco" id="precoP"/>
+			</div>
+			
+			<div class="form-group mx-sm-3 mb-2">	
+				<label for="marcaP">Marca:</label>
+				<input type="text" class="form-control" name="marca" id="marcaP">
+			</div>
+				
+			<div class="form-group mx-sm-3 mb-2">
+				<label for="descricaoP">Descrição:</label>
+				<input type="text" class="form-control" name="descricao" id="descricaoP">
+			</div>
 		
-			Nome:<input type="text" value="" name="nome" /><br><br>
-			Preço:<input type="text" value="" name="preco" /><br><br>
-			Marca:<input type="text" value="" name="marca" /><br><br>
-			Descrição<input type="text" value="" name="descricao" size="10" /><br><br>
-		
-			<button type="submit">Salvar</button>
+			<button class="btn btn-primary" type="submit">Salvar</button>
+			<a href="/">Voltar</a>
 		
 		</form>
 	
 	</body>
+	
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	
 </html>
