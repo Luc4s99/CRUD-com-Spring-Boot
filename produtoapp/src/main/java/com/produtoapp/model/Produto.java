@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.sun.istack.NotNull;
+
 /*
  * A seguinte anotação indica que esta classe representa uma entidade no banco de dados 
  */
@@ -21,13 +23,21 @@ public class Produto implements Serializable{
 	@Id
 	
 	/*
-	 * A seguinte anotação define que o identificador será um valor gerado, neste caso será automático 
+	 * A anotação @GeneratedValue define que o identificador será um valor gerado, neste caso será automático
+	 * A anotação @NotNull define que o campo que ela anota não pode possuir valor nulo 
 	 */
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	
+	@NotNull
 	private String nome;
+	
+	@NotNull
 	private float preco;
+	
+	@NotNull
 	private String marca;
+	
 	private String descricao;
 	
 	public long getId() {

@@ -17,17 +17,16 @@
 		<h1>Informação do Produto</h1>
 		
 		<div th:each="produto: ${produto}" class="container">
-		
-			<div class="row">
 			
-				<p><span th:text="${produto.nome}"></span></p>
-				<p><span th:text="${produto.preco}"></span></p>
-				<p><span th:text="${produto.marca}"></span></p>
-				<p><span th:text="${produto.descricao}"></span></p>
-			
-			</div>
+				<p>Nome: <span th:text="${produto.nome}"></span></p>
+				<p>Preço(R$): <span th:text="${produto.preco}"></span></p>
+				<p>Marca: <span th:text="${produto.marca}"></span></p>
+				<p>Descrição: <span th:text="${produto.descricao}"></span></p>
 		
 		</div>
+		
+		<a th:href="${(#mvc.url('PC#deletarProduto').arg(0, produto.id)).build()}"><button type="button" class="btn btn-danger">Deletar</button></a>
+		<a href="/verProdutos">Voltar</a>
 	
 	</body>
 	

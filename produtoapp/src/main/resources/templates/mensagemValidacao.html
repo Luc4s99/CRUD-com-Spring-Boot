@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	  
+	<head>
+	
+		<meta charset="utf-8">
+		<title>Produto APP</title>
+		
+	</head>
+	
+	<body>
+
+		<br><br>
+		
+		<div class="alert alert-danger alert-dismissible" role="alert" th:if="${not #strings.isEmpty(mensagem)}">
+		
+			<span th:text="${mensagem}"></span>
+		
+		</div>
+	
+	</body>
+	
+</html>

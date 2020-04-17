@@ -23,28 +23,30 @@
 			
 			<div class="form-group mx-sm-3 mb-2">
 				<label for="nomeP">Nome do Produto:</label>
-	    		<input type="text" class="form-control" name="nome" id="nomeP">
+	    		<input type="text" class="form-control" name="nome" id="nomeP" required />
 	    	</div>
 				
 			<div class="form-group mx-sm-3 mb-2">
 				<label for="precoP">Preço:</label>	
-				<input type="number" class="form-control" name="preco" id="precoP"/>
+				<input type="number" class="form-control" name="preco" id="precoP" required />
 			</div>
 			
 			<div class="form-group mx-sm-3 mb-2">	
 				<label for="marcaP">Marca:</label>
-				<input type="text" class="form-control" name="marca" id="marcaP">
+				<input type="text" class="form-control" name="marca" id="marcaP" required />
 			</div>
 				
 			<div class="form-group mx-sm-3 mb-2">
 				<label for="descricaoP">Descrição:</label>
-				<input type="text" class="form-control" name="descricao" id="descricaoP">
+				<input type="text" class="form-control" name="descricao" id="descricaoP"/>
 			</div>
 		
 			<button class="btn btn-primary" type="submit">Salvar</button>
 			<a href="/">Voltar</a>
 		
 		</form>
+		
+		<th:block th:include="mensagemValidacao"></th:block>
 	
 	</body>
 	

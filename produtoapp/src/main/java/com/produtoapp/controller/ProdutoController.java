@@ -1,11 +1,15 @@
 package com.produtoapp.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.produtoapp.model.Produto;
 import com.produtoapp.repository.ProdutoRepository;
@@ -24,11 +28,24 @@ public class ProdutoController {
 		return "produto/formProduto.html";
 	}
 	
+	/*
+	 * A anotação @Valid indica que o objeto será validado de acordo com as anotações dos campos do mesmo 
+	 */
 	@RequestMapping(value = "/cadastrarProduto", method = RequestMethod.POST)
-	public String form(Produto produto) {
-		
+	public String form(@Valid Produto produto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+		if(bindingResult.hasErrors()) {
+			redirectAttributes.addFlashAttribute("mensagem", "Verifique os campos!");
+			return "redirect:/cadastrarProduto";
+		}
 		produtoRepository.save(produto);
-		
+		redirectAttributes.addFlashAttribute("mensagem", "Salvo com sucesso!");
+		return "redirect:/verProdutos";
+	}
+	
+	@RequestMapping("/deletar")
+	public String deletarProduto(long id) {
+		Produto produto = produtoRepository.findById(id);
+		produtoRepository.delete(produto);
 		return "redirect:/verProdutos";
 	}
 	
