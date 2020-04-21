@@ -16,19 +16,53 @@
 	
 		<h1>Informação do Produto</h1>
 		
-		<div th:each="produto: ${produto}" class="container">
+		<form method="post">
+		
+			<div th:each="produto: ${produto}" class="container">
+				
+					Nome: <input th:value="${produto.nome}" name="nome" id="prodNome" disabled required></input>
+					
+					<br><br>
+					
+					Preço(R$): <input th:value="${produto.preco}" name="preco" id="prodPreco" disabled required></input>
+					
+					<br><br>
+					
+					Marca: <input th:value="${produto.marca}" name="marca" id="prodMarca" disabled required></input>
+					
+					<br><br>
+					
+					Descrição: <input th:value="${produto.descricao}" name="descricao" id="prodDescricao" disabled></input>
+					
+					<br><br>
 			
-				<p>Nome: <span th:text="${produto.nome}"></span></p>
-				<p>Preço(R$): <span th:text="${produto.preco}"></span></p>
-				<p>Marca: <span th:text="${produto.marca}"></span></p>
-				<p>Descrição: <span th:text="${produto.descricao}"></span></p>
-		
-		</div>
-		
-		<a th:href="${(#mvc.url('PC#deletarProduto').arg(0, produto.id)).build()}"><button type="button" class="btn btn-danger">Deletar</button></a>
-		<a href="/verProdutos">Voltar</a>
+			</div>
+			
+			<a th:href="${(#mvc.url('PC#editarProduto').arg(0, produto)).build()}"><button class="btn btn-primary" id="btnSalvar" type="submit" disabled>Salvar</button></a>
+			<button class="btn btn-info" type="button" id="btnEditar">Editar</button>
+			<a th:href="${(#mvc.url('PC#deletarProduto').arg(0, produto.id)).build()}"><button type="button" class="btn btn-danger">Deletar</button></a>
+			<a href="/verProdutos">Voltar</a>
+			
+		</form>
 	
 	</body>
+	
+	<script type="text/javascript">
+	
+		var btnEditar = document.getElementById("btnEditar");
+		var btnSalvar = document.getElementById("btnSalvar");
+		
+		btnEditar.addEventListener("click", function(){
+			var elementosInput = document.querySelectorAll("input");
+			
+			for(elemento of elementosInput){
+				elemento.removeAttribute("disabled");
+			}
+			
+			btnSalvar.removeAttribute("disabled");
+		});
+	
+	</script>
 	
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -30,6 +30,7 @@ public class ProdutoController {
 	
 	/*
 	 * A anotação @Valid indica que o objeto será validado de acordo com as anotações dos campos do mesmo 
+	 * Receberá o produto por parametro, quando uma requisição POST for feita na URL determinada
 	 */
 	@RequestMapping(value = "/cadastrarProduto", method = RequestMethod.POST)
 	public String form(@Valid Produto produto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
@@ -42,13 +43,24 @@ public class ProdutoController {
 		return "redirect:/verProdutos";
 	}
 	
-	@RequestMapping("/deletar")
-	public String deletarProduto(long id) {
-		Produto produto = produtoRepository.findById(id);
-		produtoRepository.delete(produto);
+	//Método para atualizar registros
+	@RequestMapping(value = "/{id}", method = RequestMethod.POST)
+	public String editarProduto(@Valid Produto produto) {
+		/*
+		 * O método save serve tanto para salvar quanto para atualizar, se o registro já possuir um id, ele é atualizado automaticamente, senão ele é salvo
+		 */
+		produtoRepository.save(produto);
 		return "redirect:/verProdutos";
 	}
 	
+	//Método para deletar registros
+	@RequestMapping("/deletar")
+	public String deletarProduto(long id) {
+		produtoRepository.deleteById(id);
+		return "redirect:/verProdutos";
+	}
+	
+	//Método para ver os registros
 	@RequestMapping("/verProdutos")
 	public ModelAndView listaProdutos() {
 		ModelAndView modelAndView = new ModelAndView("produto/formProdutos.html");
@@ -67,5 +79,4 @@ public class ProdutoController {
 		modelAndView.addObject("produto", produto);
 		return modelAndView;
 	}
-
 }
